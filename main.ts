@@ -1,4 +1,5 @@
 radio.onReceivedNumber(function (receivedNumber) {
+    basic.showNumber(receivedNumber)
     if (0 == receivedNumber) {
         wuKong.mecanumStop()
     } else if (1 == receivedNumber) {
@@ -42,5 +43,5 @@ wuKong.ServoList.S2,
 wuKong.ServoList.S3,
 wuKong.ServoList.S4
 )
-basic.showIcon(IconNames.Angry)
-wuKong.setLightMode(wuKong.LightMode.OFF)
+basic.showIcon(IconNames.Surprised)
+wuKong.setLightMode(wuKong.LightMode.BREATH)
