@@ -19,10 +19,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     } else if (8 == receivedNumber) {
         wuKong.mecanumRun(wuKong.RunList.RightRear, 100)
     } else if (9 == receivedNumber) {
-        wuKong.mecanumRun(wuKong.RunList.stop, 0)
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 0)
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 45)
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 90)
+        wuKong.setServoSpeed(wuKong.ServoList.S0, 15)
     } else if (10 == receivedNumber) {
         wuKong.mecanumDrift(wuKong.TurnList.Left)
     } else if (11 == receivedNumber) {
@@ -35,13 +32,20 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.showIcon(IconNames.No)
     }
 })
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    radio.sendNumber(3)
+    wuKong.mecanumRun(wuKong.RunList.stop, 0)
+    wuKong.setServoSpeed(wuKong.ServoList.S0, 0)
+    music.playSoundEffect(music.builtinSoundEffect(soundExpression.giggle), SoundExpressionPlayMode.UntilDone)
+})
 radio.setGroup(3)
 radio.setFrequencyBand(33)
+radio.setTransmitPower(7)
 wuKong.mecanumWheel(
 wuKong.ServoList.S1,
 wuKong.ServoList.S2,
 wuKong.ServoList.S3,
 wuKong.ServoList.S4
 )
-basic.showIcon(IconNames.Surprised)
 wuKong.setLightMode(wuKong.LightMode.BREATH)
+basic.showIcon(IconNames.Butterfly)
